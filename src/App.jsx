@@ -4,7 +4,8 @@ import React from "react";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import Home from "./components/Home.jsx";
 import L01JSX from "./components/L01JSX.jsx";
-import L02Props from "./components/L02Props.jsx"; //컴포넌트와 관련된 스타일
+import L02Props from "./components/L02Props.jsx";
+import L03State from "./components/L03State.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
                 <li>
                     <Link to="/study/L02Props">l02 props</Link>
                 </li>
+                <li>
+                    <Link to="/study/L03State">l03 컴포넌트의 state</Link>
+                </li>
             </ul>
         </nav>
         <Routes>
@@ -28,6 +32,7 @@ function App() {
             <Route path="/study">
                 <Route path="L01JSX" element={<L01JSX></L01JSX>}/>
                 <Route path="L02Props" element={<L02Props></L02Props>}/>
+                <Route path="L03State" element={<L03State></L03State>}/>
             </Route>
         </Routes>
     </BrowserRouter>
