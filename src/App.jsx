@@ -1,20 +1,36 @@
 
 import './App.css'
-import React from "react"; //컴포넌트와 관련된 스타일
+import React from "react";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import Home from "./components/Home.jsx";
+import L01JSX from "./components/L01JSX.jsx";
+import L02Props from "./components/L02Props.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
-
   return (
-    <>
-        {/*<h1>리액트 수업</h1>*/}
-        {React.createElement("h1",{},"리액트 수업")}
-        <hr/>
-        <CustomUl title="리액트 배포(build) 및 실행(dev)">
-            <li>추가한 자식 jsx (props.children)</li>
-            <li>children 은 2개 이상 전달 가능</li>
-        </CustomUl>
-    </>
+    <BrowserRouter>
+        <nav>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/study/L01JSX">l01 jsx</Link>
+                </li>
+                <li>
+                    <Link to="/study/L02Props">l02 props</Link>
+                </li>
+            </ul>
+        </nav>
+        <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/study">
+                <Route path="L01JSX" element={<L01JSX></L01JSX>}/>
+                <Route path="L02Props" element={<L02Props></L02Props>}/>
+            </Route>
+        </Routes>
+    </BrowserRouter>
   )
 }
 //컴포넌트는 매개변수로 무조건 object를 받는다.
