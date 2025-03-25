@@ -51,6 +51,7 @@ function PropsCounter(){
                 {cnt}
                 <button onClick={(e)=>{
                     cnt++;
+                    console.log(cnt)
                 }}>cnt++</button>
             </p>
         </>
