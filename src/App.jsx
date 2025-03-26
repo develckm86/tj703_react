@@ -10,7 +10,10 @@ import L04Counter from "./components/L04Counter.jsx";
 import L05Input from "./components/L05Input.jsx";
 import L06ToDos from "./components/L06ToDos.jsx";
 import H01ToDos from "./components/H01ToDos.jsx";
-import L07UseEffect from "./components/L07UseEffect.jsx"; //컴포넌트와 관련된 스타일
+import L07UseEffect from "./components/L07UseEffect.jsx";
+import L08UseEffectClock from "./components/L08UseEffectClock.jsx";
+import H02Clock from "./components/H02Clock.jsx";
+import L09FetchApi from "./components/L09FetchApi.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
@@ -45,6 +48,15 @@ function App() {
                 <li>
                     <Link to="/study/L07UseEffect">l07 uesEffect </Link>
                 </li>
+                <li>
+                    <Link to="/study/L08UseEffectClock">l08 uesEffect 시계 </Link>
+                </li>
+                <li>
+                    <Link to="/homework/H02Clock">h02 시계 구현 과제 </Link>
+                </li>
+                <li>
+                    <Link to="/study/L09FetchApi">l09 useEffect 비동기식 통신 </Link>
+                </li>
             </ul>
         </nav>
         <Routes>
@@ -57,9 +69,12 @@ function App() {
                 <Route path="L05Input" element={<L05Input></L05Input>}/>
                 <Route path="L06ToDos" element={<L06ToDos></L06ToDos>}/>
                 <Route path="L07UseEffect" element={<L07UseEffect></L07UseEffect>}/>
+                <Route path="L08UseEffectClock" element={<L08UseEffectClock></L08UseEffectClock>}/>
+                <Route path="L09FetchApi" element={<L09FetchApi></L09FetchApi>}/>
             </Route>
             <Route path="/homework">
                 <Route path="H01ToDos" element={<H01ToDos></H01ToDos>}/>
+                <Route path="H02Clock" element={<H02Clock></H02Clock>}/>
             </Route>
         </Routes>
     </BrowserRouter>
