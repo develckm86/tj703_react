@@ -8,6 +8,7 @@ import App from './App.jsx'
 *  2) 컴포넌트 함수가 외부 상태나 변수를 참조하지 않는지 검사 (순수함수)
 *  3) 불필요한 렌더링(브라우저에 컴포넌트를 출력) 감지
 *  4) 컴포넌트가 삭제될때 useEffect의 클린업을 감지
+*  5) 검사때문에 컴포넌트를 2번 렌더링 할 수도 있다.
 * */
 createRoot(document.getElementById('root')).render(
     <StrictMode>

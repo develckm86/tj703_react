@@ -9,7 +9,8 @@ import L03State from "./components/L03State.jsx";
 import L04Counter from "./components/L04Counter.jsx";
 import L05Input from "./components/L05Input.jsx";
 import L06ToDos from "./components/L06ToDos.jsx";
-import H01ToDos from "./components/H01ToDos.jsx"; //컴포넌트와 관련된 스타일
+import H01ToDos from "./components/H01ToDos.jsx";
+import L07UseEffect from "./components/L07UseEffect.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
                 <li>
                     <Link to="/homework/H01ToDos">h01 할일 목록 과제</Link>
                 </li>
+                <li>
+                    <Link to="/study/L07UseEffect">l07 uesEffect </Link>
+                </li>
             </ul>
         </nav>
         <Routes>
@@ -52,6 +56,7 @@ function App() {
                 <Route path="L04Counter" element={<L04Counter cnt={10}></L04Counter>}/>
                 <Route path="L05Input" element={<L05Input></L05Input>}/>
                 <Route path="L06ToDos" element={<L06ToDos></L06ToDos>}/>
+                <Route path="L07UseEffect" element={<L07UseEffect></L07UseEffect>}/>
             </Route>
             <Route path="/homework">
                 <Route path="H01ToDos" element={<H01ToDos></H01ToDos>}/>
