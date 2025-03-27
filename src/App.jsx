@@ -13,7 +13,8 @@ import H01ToDos from "./components/H01ToDos.jsx";
 import L07UseEffect from "./components/L07UseEffect.jsx";
 import L08UseEffectClock from "./components/L08UseEffectClock.jsx";
 import H02Clock from "./components/H02Clock.jsx";
-import L09FetchApi from "./components/L09FetchApi.jsx"; //컴포넌트와 관련된 스타일
+import L09FetchApi from "./components/L09FetchApi.jsx";
+import L10SalaryFetch from "./components/L10SalaryFetch.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
@@ -57,6 +58,9 @@ function App() {
                 <li>
                     <Link to="/study/L09FetchApi">l09 useEffect 비동기식 통신 </Link>
                 </li>
+                <li>
+                    <Link to="/study/L10SalaryFetch">l10 Spring boot 비동기식 통신 </Link>
+                </li>
             </ul>
         </nav>
         <Routes>
@@ -71,6 +75,7 @@ function App() {
                 <Route path="L07UseEffect" element={<L07UseEffect></L07UseEffect>}/>
                 <Route path="L08UseEffectClock" element={<L08UseEffectClock></L08UseEffectClock>}/>
                 <Route path="L09FetchApi" element={<L09FetchApi></L09FetchApi>}/>
+                <Route path="L10SalaryFetch" element={<L10SalaryFetch></L10SalaryFetch>}/>
             </Route>
             <Route path="/homework">
                 <Route path="H01ToDos" element={<H01ToDos></H01ToDos>}/>
