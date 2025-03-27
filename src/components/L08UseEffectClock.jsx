@@ -4,8 +4,7 @@ export default function L08UseEffectClock () {
     const [now, setNow] = useState(new Date());
     const intervalRef = useRef(null);
     //let intervalNum=null;
-    //useRef : 렌더링되어도 유지되는 데이터로
-    // 데이터가 바껴도 렌더링 되지 않는다.
+    //useRef : 렌더링되어도 유지되는 데이터로, 데이터가 바껴도 update 되지 않는다.
     // (node 개체를 참조할 때, 전역변수 처럼)
     // useRef.current 를 바꾸거나 참조
     //interval==소켓통신
