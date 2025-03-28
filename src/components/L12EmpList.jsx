@@ -2,6 +2,7 @@ import {useQuery} from "@tanstack/react-query";
 import L12Loading from "./L12Loading.jsx";
 import L12Error from "./L12Error.jsx";
 import {Link, useSearchParams, useNavigate} from "react-router-dom";
+import L12PageNav from "./L12PageNav.jsx";
 
 async function loadEmps(page,size){
     await new Promise((res)=>{setTimeout(()=>{res()},2000)})
@@ -56,7 +57,6 @@ export default function L12EmpList(){
                         <th>성씨</th>
                         <th>성별</th>
                         <th>생일</th>
-                        <th>입사</th>
                         <th>상세</th>
                     </tr>
                 </thead>
@@ -68,23 +68,17 @@ export default function L12EmpList(){
                     <td>{emp.lastName}</td>
                     <td>{emp.gender}</td>
                     <td>{emp.birthDate}</td>
-                    <td>{emp.hireDate}</td>
+                    <td>
+                        <Link to={`/crud/${emp.id}/emp`}>
+                            상세
+                        </Link>
+                    </td>
                 </tr>)}
                 </tbody>
             </table>
 
-
-            {/*http://localhost:3000/crud/emp?page=3  ?쿼리스트링 == 라이터 searchParam*/}
-            <nav>
-                <ul>
-                    <li><Link to={`?page=1&size=${size}`}>1</Link></li>
-                    <li><Link to={`?page=2&size=${size}`}>2</Link></li>
-                    <li><Link to={`?page=3&size=${size}`}>3</Link></li>
-                </ul>
-            </nav>
-
-
-
+            {empPage &&
+                <L12PageNav number={empPage.number} totalPages={empPage.totalPages} size={size}/>}
         </>
     )
 }

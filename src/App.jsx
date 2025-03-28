@@ -19,7 +19,8 @@ import L11ReactQuery from "./components/L11ReactQuery.jsx";
 import H03ReactQuerySalary from "./components/H03ReactQuerySalary.jsx";
 import L12EmpCRUD from "./components/L12EmpCRUD.jsx";
 import L12EmpList from "./components/L12EmpList.jsx";
-import L12EmpRegister from "./components/L12EmpRegister.jsx"; //컴포넌트와 관련된 스타일
+import L12EmpRegister from "./components/L12EmpRegister.jsx";
+import L12EmpDetail from "./components/L12EmpDetail.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
@@ -82,6 +83,8 @@ function App() {
             {/*중첩 라우터 : 부모 요소에 Outlet 에 자식 요소를 라우팅합니다.*/}
             <Route path="/crud" element={<L12EmpCRUD/>}>
                 <Route path="emp" element={<L12EmpList/>}/>
+                {/* :empNo/emp  경로변수로 empNo를 사용 */}
+                <Route path=":empNo/emp" element={<L12EmpDetail/>}/>
                 <Route path="emp/register" element={<L12EmpRegister/>}/>
             </Route>
             <Route path="/study">
