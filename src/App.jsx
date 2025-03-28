@@ -72,14 +72,17 @@ function App() {
                 <li>
                     <Link to="/homework/H03ReactQuerySalary">h03 ReactQuery salaries 구현 과제 </Link>
                 </li>
+                <li>
+                    <Link to="/crud">l12 ReactQuery emp CRUD </Link>
+                </li>
             </ul>
         </nav>
         <Routes>
             <Route path="/" element={<Home/>}/>
             {/*중첩 라우터 : 부모 요소에 Outlet 에 자식 요소를 라우팅합니다.*/}
             <Route path="/crud" element={<L12EmpCRUD/>}>
-                <Route path="/emp" element={<L12EmpList/>}/>
-                <Route path="/emp/register" element={<L12EmpRegister/>}/>
+                <Route path="emp" element={<L12EmpList/>}/>
+                <Route path="emp/register" element={<L12EmpRegister/>}/>
             </Route>
             <Route path="/study">
                 <Route path="L01JSX" element={<L01JSX/>}/>
