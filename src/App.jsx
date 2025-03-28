@@ -16,7 +16,10 @@ import H02Clock from "./components/H02Clock.jsx";
 import L09FetchApi from "./components/L09FetchApi.jsx";
 import L10SalaryFetch from "./components/L10SalaryFetch.jsx";
 import L11ReactQuery from "./components/L11ReactQuery.jsx";
-import H03ReactQuerySalary from "./components/H03ReactQuerySalary.jsx"; //컴포넌트와 관련된 스타일
+import H03ReactQuerySalary from "./components/H03ReactQuerySalary.jsx";
+import L12EmpCRUD from "./components/L12EmpCRUD.jsx";
+import L12EmpList from "./components/L12EmpList.jsx";
+import L12EmpRegister from "./components/L12EmpRegister.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
@@ -73,16 +76,21 @@ function App() {
         </nav>
         <Routes>
             <Route path="/" element={<Home/>}/>
+            {/*중첩 라우터 : 부모 요소에 Outlet 에 자식 요소를 라우팅합니다.*/}
+            <Route path="/crud" element={<L12EmpCRUD/>}>
+                <Route path="/emp" element={<L12EmpList/>}/>
+                <Route path="/emp/register" element={<L12EmpRegister/>}/>
+            </Route>
             <Route path="/study">
-                <Route path="L01JSX" element={<L01JSX></L01JSX>}/>
-                <Route path="L02Props" element={<L02Props></L02Props>}/>
-                <Route path="L03State" element={<L03State></L03State>}/>
-                <Route path="L04Counter" element={<L04Counter cnt={10}></L04Counter>}/>
-                <Route path="L05Input" element={<L05Input></L05Input>}/>
-                <Route path="L06ToDos" element={<L06ToDos></L06ToDos>}/>
-                <Route path="L07UseEffect" element={<L07UseEffect></L07UseEffect>}/>
-                <Route path="L08UseEffectClock" element={<L08UseEffectClock></L08UseEffectClock>}/>
-                <Route path="L09FetchApi" element={<L09FetchApi></L09FetchApi>}/>
+                <Route path="L01JSX" element={<L01JSX/>}/>
+                <Route path="L02Props" element={<L02Props/>}/>
+                <Route path="L03State" element={<L03State/>}/>
+                <Route path="L04Counter" element={<L04Counter cnt={10}/>}/>
+                <Route path="L05Input" element={<L05Input/>}/>
+                <Route path="L06ToDos" element={<L06ToDos/>}/>
+                <Route path="L07UseEffect" element={<L07UseEffect/>}/>
+                <Route path="L08UseEffectClock" element={<L08UseEffectClock/>}/>
+                <Route path="L09FetchApi" element={<L09FetchApi/>}/>
                 <Route path="L10SalaryFetch" element={<L10SalaryFetch></L10SalaryFetch>}/>
                 <Route path="L11ReactQuery" element={<L11ReactQuery></L11ReactQuery>}/>
             </Route>

@@ -10,6 +10,7 @@ export default function L11ReactQuery(){
             const URL="http://localhost:8888/salary/10010/read.do";
             try {
                 await new Promise(resolve => {setTimeout(()=>{resolve();},2000);});
+                console.log("호출")
                 const res=await fetch(URL);
                 if(!res.ok) throw new Error(res.status+"");
                 return res.json()
@@ -23,6 +24,7 @@ export default function L11ReactQuery(){
     return (
       <>
           <h2>React Query(TanStack)로 조회한 데이터를 캐싱하자</h2>
+          <p><button onClick={()=>{refetch()}}>급여리스트 새로고침</button></p>
           {isLoading && <Loading />}
           {error && <ErrorComponent msg={error.message}/>}
           <table>

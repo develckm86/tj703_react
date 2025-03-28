@@ -29,7 +29,7 @@ export default function L10SalaryFetch() {
                 setIsLoading(false);
             }
 
-        })(); //생성한 함수를 바로 실행
+        })(); //생성한 함수를 바로 실행`
     },[])
     return (
         <>
