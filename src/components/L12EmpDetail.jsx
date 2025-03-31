@@ -2,15 +2,8 @@ import {Link, useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import L12Loading from "./L12Loading.jsx";
 import L12Error from "./L12Error.jsx";
+import {loadEmp} from "./L12EmpFetch.js";
 
-async function loadEmp(empNo){
-    const URL=`http://localhost:8888/rest/emp/${empNo}/read`;
-    const res = await fetch(URL);
-    if (!res.ok) throw new Error(res.status+"");
-    const data = await res.json();
-    console.log(data);
-    return data;
-}
 export default function L12EmpDetail() {
     //path variable => useParams
     //queryString  => useSearchParams

@@ -20,7 +20,8 @@ import H03ReactQuerySalary from "./components/H03ReactQuerySalary.jsx";
 import L12EmpCRUD from "./components/L12EmpCRUD.jsx";
 import L12EmpList from "./components/L12EmpList.jsx";
 import L12EmpRegister from "./components/L12EmpRegister.jsx";
-import L12EmpDetail from "./components/L12EmpDetail.jsx"; //컴포넌트와 관련된 스타일
+import L12EmpDetail from "./components/L12EmpDetail.jsx";
+import L12EmpModify from "./components/L12EmpModify.jsx"; //컴포넌트와 관련된 스타일
 
 
 function App() {
@@ -86,7 +87,10 @@ function App() {
                 {/* :empNo/emp  경로변수로 empNo를 사용 */}
                 <Route path=":empNo/emp" element={<L12EmpDetail/>}/>
                 <Route path="emp/register" element={<L12EmpRegister/>}/>
+                <Route path="emp/:empNo/modify" element={<L12EmpModify/>}/>
+            {/*http://localhost:3000/crud/emp/11/modify*/}
             </Route>
+
             <Route path="/study">
                 <Route path="L01JSX" element={<L01JSX/>}/>
                 <Route path="L02Props" element={<L02Props/>}/>

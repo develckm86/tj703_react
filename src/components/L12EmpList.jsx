@@ -3,17 +3,10 @@ import L12Loading from "./L12Loading.jsx";
 import L12Error from "./L12Error.jsx";
 import {Link, useSearchParams, useNavigate} from "react-router-dom";
 import L12PageNav from "./L12PageNav.jsx";
+import {loadEmps} from "./L12EmpFetch.js";
 
-async function loadEmps(page,size){
-    await new Promise((res)=>{setTimeout(()=>{res()},2000)})
-    const URL=`http://localhost:8888/rest/emp/read?page=${page}&size=${size}`;
-    const res=await fetch(URL);
-    if(!res.ok) throw new Error(res.status+"");
-    const data= await res.json();
-    console.log(data);
-    return data;
-}
 export default function L12EmpList(){
+    //?page=1&size=20
     const[searchParams,setSearchParmas]=useSearchParams();
     const navigate = useNavigate();
     const page=searchParams.get("page") || 1; //null 일때 1대입
