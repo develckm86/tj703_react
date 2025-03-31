@@ -1,13 +1,16 @@
-import {useParams} from "react-router-dom";
-import {loadEmp} from "./L12EmpFetch.js";
-import {useQuery} from "@tanstack/react-query";
+import {useParams,useNavigate} from "react-router-dom";
+import {loadEmp, modifyEmp, removeEmp} from "./L12EmpFetch.js";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import L12Loading from "./L12Loading.jsx";
 import L12Error from "./L12Error.jsx";
 import {useEffect, useState} from "react";
 
+//queryClient : 캐싱된 데이터를 보관하는 객체 (JPA EntityManager)
 export default function L12EmpModify(){
+    const navigate = useNavigate();
     const {empNo}=useParams();
     const [emp,setEmp]=useState(null);
+    const queryClient = useQueryClient();
     //useQuery.data : 조회된 데이터와 컴포넌트를 동기화 하기 위한 state
     //input.state : input의 상태 변화를 동기화 하기 위해 사용
     const{data:empData,isLoading,error}=useQuery({
@@ -18,6 +21,33 @@ export default function L12EmpModify(){
         retry:1,
         enabled: true //컴포넌트가 마운트될 때 조회
     });
+    //dml 을 할 때 사용하는 react query (데이터 캐싱이 없다)
+    const{mutate}=useMutation({
+        mutationFn:async (id)=>await removeEmp(id),
+        onSuccess:async (data)=>{
+            alert("삭제성공 :"+data);
+            //캐싱된 데이터를 삭제
+            await queryClient.invalidateQueries({queryKey:["emp",empNo]})
+            await queryClient.invalidateQueries({queryKey:["empPage"]})
+            navigate("/crud/emp");
+        },
+        onError:(error)=>{
+            alert("삭제실패 :"+error.message);
+        }
+    })
+    const{ mutate:modifyMutate }=useMutation({
+        mutationFn : async (mutateEmp)=>await modifyEmp(mutateEmp),
+        onSuccess: async ()=>{
+            alert("수정성공");
+            await queryClient.invalidateQueries({queryKey:["emp",empNo]});
+            navigate(`/crud/${empNo}/emp`);
+        },
+        onError:(error)=>{
+            // 415 (Unsupported Media Type) json=>dto파싱 하면서 생기는 오류
+            // "1986-05-25"=>LocalDate
+            alert("수정실패 :"+error.message);
+        }
+    })
     //useEffect(()=>{},[]) :컴포넌트가 마운트 되었을 때
     useEffect(()=>{
         setEmp(empData);
@@ -31,10 +61,12 @@ export default function L12EmpModify(){
     }
     const modifyFormSubmitHandler=(e)=>{
         e.preventDefault();
+        console.log(emp)
+        modifyMutate(emp);
+
     }
     const removeHandler=()=>{
-        console.log(empNo,emp.id,empData.id,"삭제");
-
+        mutate(emp.id); //삭제
     }
     const modifyResetHandler=(e)=>{
         e.preventDefault();
